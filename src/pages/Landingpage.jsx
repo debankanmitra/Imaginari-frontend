@@ -1,4 +1,6 @@
+import Features from "../components/Features";
 import Hero from "../components/Hero";
+import Models from "../components/Models";
 import Nav from "../components/Nav";
 
 
@@ -7,6 +9,8 @@ function Landingpage() {
     <>
       <Nav />
       <Hero />
+      <Models />
+      <Features />
     </>
   );
 }
