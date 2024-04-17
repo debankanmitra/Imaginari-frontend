@@ -55,32 +55,32 @@ function Hero() {
 					<div className="w-full lg:w-1/2 lg:mt-0 md:mt-40 mt-16 max-lg:max-w-2xl">
 						<div className="grid grid-cols-1 min-[450px]:grid-cols-2 md:grid-cols-3 gap-8">
 							<img
-								src="https://pagedone.io/asset/uploads/1696238644.png"
+								src="https://media.craiyon.com/2023-06-05/6fd5a100ecff4046959a67f00584f99f.webp"
 								alt="Team tailwind section"
 								className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0"
 							/>
 							<img
-								src="https://pagedone.io/asset/uploads/1696238665.png"
+								src="https://pics.craiyon.com/2023-08-02/d4840af94ebd4be9845b1ffe4a777c79.webp"
 								alt="Team tailwind section"
 								className="w-44 h-56 rounded-2xl object-cover mx-auto min-[450px]:ml-0 md:mx-auto"
 							/>
 							<img
-								src="https://pagedone.io/asset/uploads/1696238684.png"
+								src="https://cdn.pixabay.com/photo/2023/05/25/12/13/ai-generated-8017114_960_720.jpg"
 								alt="Team tailwind section"
 								className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0 md:ml-0"
 							/>
 							<img
-								src="https://pagedone.io/asset/uploads/1696238702.png"
+								src="https://cdn.pixabay.com/photo/2023/04/10/21/28/ai-generated-7914785_960_720.jpg"
 								alt="Team tailwind section"
 								className="w-44 h-56 rounded-2xl object-cover mx-auto min-[450px]:ml-0 md:mr-0 md:ml-auto"
 							/>
 							<img
-								src="https://pagedone.io/asset/uploads/1696238720.png"
+								src="https://data.ipic.ai/images/j7UdT2VW1AkXWUP_1705044584.png"
 								alt="Team tailwind section"
 								className="w-44 h-56 rounded-2xl object-cover md:-mt-20 mx-auto min-[450px]:mr-0 md:mx-auto"
 							/>
 							<img
-								src="https://pagedone.io/asset/uploads/1696238737.png"
+								src="https://cdn.pixabay.com/photo/2023/02/07/10/49/ai-generated-7773820_1280.jpg"
 								alt="Team tailwind section"
 								className="w-44 h-56 rounded-2xl object-cover mx-auto min-[450px]:ml-0 md:mr-0"
 							/>
