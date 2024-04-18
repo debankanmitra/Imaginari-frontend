@@ -6,26 +6,26 @@ function Hero() {
 					<div>
 						<div className="max-w-xl mx-auto lg:mx-0">
 							<h1 className="text-center text-4xl font-semibold tracking-tighter text-gray-900 lg:text-5xl text-balance lg:text-left">
-								Building one pagers together, wherever and anywhere
+							AI Tools to create and edit images with text
 							</h1>
-							<p className="mt-4 text-base font-medium text-gray-500 text-center lg:text-left">
-								The fastest method for working together
-								<span className="md:block">
-									on staging and temporary environments.
-								</span>
+							<p className="mt-4 text-base font-medium text-gray-500 text-center lg:text-left lg:max-w-sm">
+							Generate images from prompts in seconds, edit photos, expand pictures, Enhance your images with ease.
+								
+								Type words, get pictures — imagination is the only limit.
+								
 							</p>
 							<div className="flex flex-col items-center justify-center lg:justify-start gap-2 mx-auto mt-8 md:flex-row">
 								<button
 									className="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black"
 									aria-label="Primary action"
 								>
-									Primary button
+									Start Creating
 								</button>
 								<button
 									className="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 md:w-auto rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 									aria-label="Secondary action"
 								>
-									Secondary button
+									See Gallery
 								</button>
 							</div>
 						</div>
