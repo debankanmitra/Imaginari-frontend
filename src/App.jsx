@@ -9,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landingpage />} />
       <Route path="/generate" element={<Generate2 />} />
+      <Route path="/generate2" element={<Generate />} />
     </Routes>
     
   );

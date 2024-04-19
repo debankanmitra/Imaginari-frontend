@@ -66,25 +66,25 @@ function Nav() {
 							href="#"
 							aria-current="page"
 						>
-							Landing
+							Home
 						</a>
 						<a
 							className="font-medium text-gray-500 hover:text-gray-400 md:py-6 "
 							href="#"
 						>
-							Account
+							Features
 						</a>
-						<a
+						{/* <a
 							className="font-medium text-gray-500 hover:text-gray-400 md:py-6"
 							href="#"
 						>
 							Work
-						</a>
+						</a> */}
 						<a
 							className="font-medium text-gray-500 hover:text-gray-400 md:py-6"
 							href="#"
 						>
-							Blog
+							Gallery
 						</a>
 
 						<div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
@@ -93,7 +93,7 @@ function Nav() {
 								className="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium"
 								onClick={toggleDropdown}
 							>
-								Dropdown
+								Tools
 								<svg
 									className="ms-2 size-4"
 									xmlns="http://www.w3.org/2000/svg"
