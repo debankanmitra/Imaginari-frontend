@@ -2,8 +2,9 @@ import Nav from "../components/Nav";
 import { useState } from "react";
 function Anime() {
 	const [image, setImage] = useState(null);
+	const [file, setFile] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("BlueWillow v4");
+	const [selectedOption, setSelectedOption] = useState("face2paint");
 
 	const [showGeneratedImage, setShowGeneratedImage] = useState(false);
 
@@ -19,6 +20,7 @@ function Anime() {
 	const handleImageUpload = (event) => {
 		const file = event.target.files[0];
 		const reader = new FileReader();
+		setFile(file);
 
 		reader.onloadend = () => {
 			setImage(reader.result);
@@ -26,6 +28,30 @@ function Anime() {
 
 		if (file) {
 			reader.readAsDataURL(file);
+		}
+	};
+
+	// Assuming you have the image data and model stored in state
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const formData = new FormData();
+		if (!image) {
+			// Handle error if no file is selected (optional)
+			console.error("Please select an image");
+			return;
+		}
+		formData.append("image", file); // imageData is the base64 encoded image
+		formData.append("model", selectedOption);
+
+		try {
+			const response = await fetch("http://127.0.0.1:8000/toanime", {
+				method: "POST",
+				body: formData,
+			});
+			const data = await response.json();
+			console.log(data); // Handle response from backend
+		} catch (error) {
+			console.error("Error uploading image:", error);
 		}
 	};
 	return (
@@ -83,7 +109,7 @@ function Anime() {
 
 											{isOpen && (
 												<div
-													className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+													className="absolute right-0 z-10 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 													role="menu"
 													aria-orientation="vertical"
 													aria-labelledby="menu-button"
@@ -91,48 +117,14 @@ function Anime() {
 												>
 													<div className="py-1" role="none">
 														<a
-															href="#"
 															className="text-gray-700 block px-4 py-2 text-sm"
 															role="menuitem"
 															tabIndex="-1"
 															onClick={() =>
-																handleOptionSelect("BlueWillow v4")
+																handleOptionSelect("face2paint")
 															}
 														>
-															BlueWillow v4
-														</a>
-														<a
-															href="#"
-															className="text-gray-700 block px-4 py-2 text-sm"
-															role="menuitem"
-															tabIndex="-1"
-															onClick={() => handleOptionSelect("DALL.E 2")}
-														>
-															DALL.E 2
-														</a>
-													</div>
-													<div className="py-1" role="none">
-														<a
-															href="#"
-															className="text-gray-700 block px-4 py-2 text-sm"
-															role="menuitem"
-															tabIndex="-1"
-															onClick={() =>
-																handleOptionSelect("Stable Diffusion v2")
-															}
-														>
-															Stable Diffusion v2
-														</a>
-														<a
-															href="#"
-															className="text-gray-700 block px-4 py-2 text-sm"
-															role="menuitem"
-															tabIndex="-1"
-															onClick={() =>
-																handleOptionSelect("Google Imagen 2")
-															}
-														>
-															Google Imagen 2
+															face2paint
 														</a>
 													</div>
 												</div>
@@ -198,11 +190,13 @@ function Anime() {
 											<span className="text-sm font-semibold text-gray-400 text-balance tracking-tighter">
 												Upload an image to use as base.
 											</span>
-										</div><br/>
+										</div>
+										<br />
 									</div>
 
 									<div className="mt-5">
 										<button
+											onClick={handleSubmit}
 											type="submit"
 											className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
 										>
@@ -250,8 +244,9 @@ function Anime() {
 														<p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
 															Looks like you haven&apos;t created anything yet!
 															On the Left hand template provide sample prompt
-															and then click Generate. Our image-to-image feature
-															turns your words into beautiful AI visuals.
+															and then click Generate. Our image-to-image
+															feature turns your words into beautiful AI
+															visuals.
 														</p>
 													</article>
 												)}

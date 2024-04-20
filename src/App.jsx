@@ -8,6 +8,7 @@ import Outpainting from "./pages/Outpainting";
 import Removebg from "./pages/Removebg";
 import Restore from "./pages/Restore";
 import Anime from "./pages/Anime";
+import Fix from "./pages/Fix";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
       <Route path="/removebg" element={<Removebg />} />
       <Route path="/restore" element={<Restore />} />
       <Route path="/anime" element={<Anime />} />
+      <Route path="/test" element={<Fix />} />
+
 
       
 
