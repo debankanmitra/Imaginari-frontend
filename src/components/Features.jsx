@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const Card = ({ img, title, description }) => {
+const Card = ({ img, title, description, link }) => {
 	return (
 		<div>
 			<div className="overflow-hidden rounded-3xl border p-2 lg:max-h-60">
@@ -12,8 +13,8 @@ const Card = ({ img, title, description }) => {
 					<p className="mt-2">{description}</p>
 				</div>
 				<div className="mt-8 flex">
-					<a
-						href="#_"
+					<Link
+						to={link}
 						className="inline-flex items-center justify-center text-sm font-semibold text-black duration-200 hover:text-blue-500 focus:outline-none px-3 py-2 border border-slate-500 rounded-full hover:border-blue-500"
 						aria-label="Read more about the topic"
 					>
@@ -34,7 +35,7 @@ const Card = ({ img, title, description }) => {
 								d="M13 7l5 5m0 0l-5 5m5-5H6"
 							></path>
 						</svg>
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>
@@ -45,6 +46,7 @@ Card.propTypes = {
 	img: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	description: PropTypes.string.isRequired,
+	link: PropTypes.string.isRequired,
 };
 
 const details = [
@@ -53,49 +55,54 @@ const details = [
 		title: "Generate Image",
 		description:
 			"Generate novel images using only a text prompt (text-to-image AI generation).",
+		link: "/generate",
 	},
 	{
 		img: "Replace.jpg",
 		title: "Edit Image",
 		description:
 			"Edit an entire uploaded or generated image with a text prompt.",
+		link: "/edit",
 	},
 	{
 		img: "upscaler.jpg",
 		title: "Upscale Image",
 		description:
 			"Enhance quality & details of existing images using AI Upscaling.",
+		link: "/upscale",
 	},
 	{
 		img: "inpainting.jpg",
 		title: "Image Inpainting",
-		description:
-			"Manipulate & replace parts of an image using AI",
+		description: "Manipulate & replace parts of an image using AI",
+		link: "/inpainting",
 	},
 	{
 		img: "outpainting.jpg",
 		title: "Image Outpainting",
-		description:
-			"Outpaint & expand images using AI.",
+		description: "Outpaint & expand images using AI.",
+		link: "/outpainting",
 	},
 	{
 		img: "remove-background.jpg",
 		title: "Remove Background",
-		description:
-			"Remove a background from any image using AI.",
+		description: "Remove a background from any image using AI.",
+		link: "/removebg",
 	},
 	{
 		img: "restore.webp",
 		title: "Restore Images",
 		description:
 			"Improve or restore images by deblurring, colorization, and removing noise",
+		link: "/restore",
 	},
 	{
 		img: "anime.jpg",
 		title: "Image to Anime",
 		description:
 			"The licensor provides the work 'as is,' and users must use it at their own risk.",
-	}
+		link: "/anime",
+	},
 ];
 function Features() {
 	return (
@@ -108,7 +115,8 @@ function Features() {
 					</h1>
 
 					<p className="w-1/2 mx-auto mt-4 text-base font-medium text-gray-500 text-balance">
-						Our AI based editing features let you generate images using state of the art ML models.
+						Our AI based editing features let you generate images using state of
+						the art ML models.
 					</p>
 
 					<div className="grid grid-cols-2 mt-12 text-sm font-medium text-gray-500 gap-x-2 gap-y-12 lg:grid-cols-3 lg:gap-y-16 text-balance text-left">
@@ -118,6 +126,7 @@ function Features() {
 								img={detail.img}
 								title={detail.title}
 								description={detail.description}
+								link={detail.link}
 							/>
 						))}
 					</div>
