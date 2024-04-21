@@ -92,8 +92,7 @@ const details = [
 	{
 		img: "restore.webp",
 		title: "Restore Images",
-		description:
-			"Improve or restore images by deblurring, colorization, and removing noise",
+		description: "Improve or restore images Bringing Old Photos Back to Life with AI.",		
 		link: "/restore",
 	},
 	{

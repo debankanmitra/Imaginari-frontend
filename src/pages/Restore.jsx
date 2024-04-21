@@ -2,10 +2,12 @@ import Nav from "../components/Nav";
 import { useState } from "react";
 function Restore() {
 	const [image, setImage] = useState(null);
+	const [file, setFile] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("BlueWillow v4");
+	const [url, setUrl] = useState(null);
+	const [selectedOption, setSelectedOption] = useState("Photai v2");
 
-	const [showGeneratedImage, setShowGeneratedImage] = useState(false);
+	const [showGeneratedImage, setShowGeneratedImage] = useState("text");
 
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
@@ -19,6 +21,7 @@ function Restore() {
 	const handleImageUpload = (event) => {
 		const file = event.target.files[0];
 		const reader = new FileReader();
+		setFile(file);
 
 		reader.onloadend = () => {
 			setImage(reader.result);
@@ -26,6 +29,30 @@ function Restore() {
 
 		if (file) {
 			reader.readAsDataURL(file);
+		}
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const formData = new FormData();
+		if (!image) {
+			// Handle error if no file is selected (optional)
+			console.error("Please select an image");
+			return;
+		}
+
+		formData.append("image", file); // imageData is the base64 encoded image
+		setShowGeneratedImage("loading");
+		try {
+			const response = await fetch("http://127.0.0.1:8000/restore", {
+				method: "POST",
+				body: formData,
+			});
+			const data = await response.json();
+			setUrl(data.output); // Assuming the response contains the URL of the generated image
+			setShowGeneratedImage("image"); // Update state to show the image
+		} catch (error) {
+			console.error("Error uploading image:", error);
 		}
 	};
 	return (
@@ -96,12 +123,12 @@ function Restore() {
 															role="menuitem"
 															tabIndex="-1"
 															onClick={() =>
-																handleOptionSelect("BlueWillow v4")
+																handleOptionSelect("Photai v2")
 															}
 														>
-															BlueWillow v4
+															Photai v2
 														</a>
-														<a
+														{/* <a
 															href="#"
 															className="text-gray-700 block px-4 py-2 text-sm"
 															role="menuitem"
@@ -109,9 +136,9 @@ function Restore() {
 															onClick={() => handleOptionSelect("DALL.E 2")}
 														>
 															DALL.E 2
-														</a>
+														</a> */}
 													</div>
-													<div className="py-1" role="none">
+													{/* <div className="py-1" role="none">
 														<a
 															href="#"
 															className="text-gray-700 block px-4 py-2 text-sm"
@@ -134,7 +161,7 @@ function Restore() {
 														>
 															Google Imagen 2
 														</a>
-													</div>
+													</div> */}
 												</div>
 											)}
 										</div>
@@ -198,11 +225,15 @@ function Restore() {
 											<span className="text-sm font-semibold text-gray-400 text-balance tracking-tighter">
 												Upload an image to use as base.
 											</span>
+											<p className="text-sm font-bold text-gray-500 text-balance tracking-tighter">
+												NOTE: Image should be in png or jpg format
+											</p>
 										</div><br/>
 									</div>
 
 									<div className="mt-5">
 										<button
+											onClick={handleSubmit}
 											type="submit"
 											className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
 										>
@@ -220,13 +251,14 @@ function Restore() {
 										<div className="py-4">
 											{/* <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-lg transition sm:p-6"> */}
 											<div className="block w-full border border-gray-100 p-8 mt-12 bg-white lg:mt-0 rounded-3xl shadow-lg py-20">
-												{showGeneratedImage ? (
+											{showGeneratedImage == "image" && (
 													<img
 														alt="hero"
 														className="object-cover object-center w-72 h-64 mx-auto lg:ml-auto rounded-2xl"
-														src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+														src={url}
 													/>
-												) : (
+												)}
+												{showGeneratedImage == "text" && (
 													<article className="rounded-lg bg-white p-4 sm:p-6 mx-auto">
 														<span className="inline-block p-2 text-white">
 															<svg
@@ -244,16 +276,20 @@ function Restore() {
 														</span>
 														<a href="#">
 															<h3 className="mt-0.5 text-lg font-medium text-gray-900">
-																Restored images will appear here.
+																Animated images will appear here.
 															</h3>
 														</a>
 														<p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
 															Looks like you haven&apos;t created anything yet!
 															On the Left hand template provide sample prompt
-															and then click Generate. Our image-to-image feature
-															turns your words into beautiful AI visuals.
+															and then click Generate. Our image-to-image
+															feature turns your words into beautiful AI
+															visuals.
 														</p>
 													</article>
+												)}
+												{showGeneratedImage == "loading" && (
+													<div className="mx-auto border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
 												)}
 											</div>
 											{/* </div> */}
