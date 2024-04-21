@@ -4,9 +4,10 @@ function Anime() {
 	const [image, setImage] = useState(null);
 	const [file, setFile] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
+	const [url, setUrl] = useState(null);
 	const [selectedOption, setSelectedOption] = useState("face2paint");
 
-	const [showGeneratedImage, setShowGeneratedImage] = useState(false);
+	const [showGeneratedImage, setShowGeneratedImage] = useState("text");
 
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
@@ -40,16 +41,23 @@ function Anime() {
 			console.error("Please select an image");
 			return;
 		}
+
 		formData.append("image", file); // imageData is the base64 encoded image
 		formData.append("model", selectedOption);
-
+		setShowGeneratedImage("loading");
 		try {
 			const response = await fetch("http://127.0.0.1:8000/toanime", {
 				method: "POST",
 				body: formData,
 			});
 			const data = await response.json();
-			console.log(data); // Handle response from backend
+			// console.log(data);
+			// if (data.message === "success") {
+			setUrl(data.output); // Assuming the response contains the URL of the generated image
+			setShowGeneratedImage("image"); // Update state to show the image
+			// } else {
+			// 	setShowGeneratedImage("text"); // Handle if the response indicates failure
+			// }
 		} catch (error) {
 			console.error("Error uploading image:", error);
 		}
@@ -120,9 +128,7 @@ function Anime() {
 															className="text-gray-700 block px-4 py-2 text-sm"
 															role="menuitem"
 															tabIndex="-1"
-															onClick={() =>
-																handleOptionSelect("face2paint")
-															}
+															onClick={() => handleOptionSelect("face2paint")}
 														>
 															face2paint
 														</a>
@@ -214,13 +220,14 @@ function Anime() {
 										<div className="py-4">
 											{/* <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-lg transition sm:p-6"> */}
 											<div className="block w-full border border-gray-100 p-8 mt-12 bg-white lg:mt-0 rounded-3xl shadow-lg py-20">
-												{showGeneratedImage ? (
+												{showGeneratedImage == "image" && (
 													<img
 														alt="hero"
 														className="object-cover object-center w-72 h-64 mx-auto lg:ml-auto rounded-2xl"
-														src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+														src={url}
 													/>
-												) : (
+												)}
+												{showGeneratedImage == "text" && (
 													<article className="rounded-lg bg-white p-4 sm:p-6 mx-auto">
 														<span className="inline-block p-2 text-white">
 															<svg
@@ -249,6 +256,9 @@ function Anime() {
 															visuals.
 														</p>
 													</article>
+												)}
+												{showGeneratedImage == "loading" && (
+													<div className="mx-auto border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
 												)}
 											</div>
 											{/* </div> */}
