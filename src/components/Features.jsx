@@ -57,13 +57,13 @@ const details = [
 			"Generate novel images using only a text prompt (text-to-image AI generation).",
 		link: "/generate",
 	},
-	{
-		img: "Replace.jpg",
-		title: "Edit Image",
-		description:
-			"Edit an entire uploaded or generated image with a text prompt.",
-		link: "/edit",
-	},
+	// {
+	// 	img: "Replace.jpg",
+	// 	title: "Edit Image",
+	// 	description:
+	// 		"Edit an entire uploaded or generated image with a text prompt.",
+	// 	link: "/edit",
+	// },
 	{
 		img: "upscaler.jpg",
 		title: "Upscale Image",

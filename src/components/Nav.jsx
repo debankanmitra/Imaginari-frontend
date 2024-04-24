@@ -18,7 +18,7 @@ function Nav() {
 						href="#"
 						aria-label="Brand"
 					>
-						Brand
+						Imaginari
 					</a>
 					<div className="md:hidden">
 						<button
@@ -88,7 +88,7 @@ function Nav() {
 						</a>
 
 						<div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
-							<button
+							{/* <button
 								type="button"
 								className="flex items-center w-full text-gray-500 hover:text-gray-400 font-medium"
 								onClick={toggleDropdown}
@@ -108,7 +108,7 @@ function Nav() {
 								>
 									<path d="m6 9 6 6 6-6" />
 								</svg>
-							</button>
+							</button> */}
 
 							<div className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-white md:shadow-md rounded-lg p-2   before:absolute top-full md:border before:-top-5 before:start-0 before:w-full before:h-5">
 								<a
