@@ -74,7 +74,7 @@ const details = [
 	{
 		img: "inpainting.jpg",
 		title: "Image Inpainting",
-		description: "Manipulate & replace parts of an image using AI",
+		description: "Manipulate & replace parts of an image using AI, Use a mask to replace anything in an image.",
 		link: "/inpainting",
 	},
 	{

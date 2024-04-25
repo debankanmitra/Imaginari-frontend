@@ -26,11 +26,7 @@ function Generate() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// const formData = new FormData();
 
-		// formData.append("style", style);
-		// formData.append("prompt", prompt);
-		// formData.append("negative_prompt", negetive_prompt);
 		let obj = {
 			style: style,
 			prompt: prompt,
