@@ -122,9 +122,7 @@ function Restore() {
 															className="text-gray-700 block px-4 py-2 text-sm"
 															role="menuitem"
 															tabIndex="-1"
-															onClick={() =>
-																handleOptionSelect("Photai v2")
-															}
+															onClick={() => handleOptionSelect("Photai v2")}
 														>
 															Photai v2
 														</a>
@@ -228,7 +226,8 @@ function Restore() {
 											<p className="text-sm font-bold text-gray-500 text-balance tracking-tighter">
 												NOTE: Image should be in png or jpg format
 											</p>
-										</div><br/>
+										</div>
+										<br />
 									</div>
 
 									<div className="mt-5">
@@ -251,7 +250,7 @@ function Restore() {
 										<div className="py-4">
 											{/* <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-lg transition sm:p-6"> */}
 											<div className="block w-full border border-gray-100 p-8 mt-12 bg-white lg:mt-0 rounded-3xl shadow-lg py-20">
-											{showGeneratedImage == "image" && (
+												{showGeneratedImage == "image" && (
 													<img
 														alt="hero"
 														className="object-cover object-center w-72 h-64 mx-auto lg:ml-auto rounded-2xl"

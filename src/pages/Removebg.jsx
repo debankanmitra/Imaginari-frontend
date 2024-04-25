@@ -6,7 +6,7 @@ function Removebg() {
 	const [file, setFile] = useState(null);
 	const [url, setUrl] = useState(null);
 
-	const [selectedOption, setSelectedOption] = useState("BlueWillow v4");
+	const [selectedOption, setSelectedOption] = useState("bg-removal v1.5");
 
 	const [showGeneratedImage, setShowGeneratedImage] = useState("text");
 
@@ -125,10 +125,10 @@ function Removebg() {
 															role="menuitem"
 															tabIndex="-1"
 															onClick={() =>
-																handleOptionSelect("BlueWillow v4")
+																handleOptionSelect("bg-removal v1.5")
 															}
 														>
-															BlueWillow v4
+															bg-removal v1.5
 														</a>
 														<a
 															href="#"

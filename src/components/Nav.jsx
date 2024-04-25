@@ -15,7 +15,7 @@ function Nav() {
 				<div className="flex items-center justify-between">
 					<a
 						className="flex-none text-xl font-semibold "
-						href="#"
+						href="/"
 						aria-label="Brand"
 					>
 						Imaginari
