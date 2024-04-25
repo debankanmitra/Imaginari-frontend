@@ -2,10 +2,18 @@ import Nav from "../components/Nav";
 import { useState } from "react";
 function Inpainting() {
 	const [image, setImage] = useState(null);
+	const [mask, setMask] = useState(null);
+	const [imgfile, setimgFile] = useState(null);
+	const [maskfile, setMaskFile] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("BlueWillow v4");
 
-	const [showGeneratedImage, setShowGeneratedImage] = useState(true);
+	const [prompt, setPrompt] = useState("");
+	const [negetive_prompt, setNegativePrompt] = useState("");
+
+	const [url, setUrl] = useState(null);
+	const [selectedOption, setSelectedOption] = useState("Stable Diffusion 1.5");
+
+	const [showGeneratedImage, setShowGeneratedImage] = useState("text");
 
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
@@ -19,6 +27,7 @@ function Inpainting() {
 	const handleImageUpload = (event) => {
 		const file = event.target.files[0];
 		const reader = new FileReader();
+		setimgFile(file);
 
 		reader.onloadend = () => {
 			setImage(reader.result);
@@ -26,6 +35,48 @@ function Inpainting() {
 
 		if (file) {
 			reader.readAsDataURL(file);
+		}
+	};
+
+	const handlemaskUpload = (event) => {
+		const file = event.target.files[0];
+		const reader = new FileReader();
+		setMaskFile(file);
+
+		reader.onloadend = () => {
+			setMask(reader.result);
+		};
+
+		if (file) {
+			reader.readAsDataURL(file);
+		}
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const formData = new FormData();
+		if (!image) {
+			// Handle error if no file is selected (optional)
+			console.error("Please select an image");
+			return;
+		}
+
+		formData.append("image", imgfile); // imageData is the base64 encoded image
+		formData.append("mask", maskfile);
+		formData.append("prompt", prompt);
+		formData.append("negative_prompt", negetive_prompt);
+
+		setShowGeneratedImage("loading");
+		try {
+			const response = await fetch("http://127.0.0.1:8000/inpainting", {
+				method: "POST",
+				body: formData,
+			});
+			const data = await response.json();
+			setUrl(data.output); // Assuming the response contains the URL of the generated image
+			setShowGeneratedImage("image"); // Update state to show the image
+		} catch (error) {
+			console.error("Error uploading image:", error);
 		}
 	};
 	return (
@@ -96,12 +147,12 @@ function Inpainting() {
 															role="menuitem"
 															tabIndex="-1"
 															onClick={() =>
-																handleOptionSelect("BlueWillow v4")
+																handleOptionSelect("Stable Diffusion 1.5")
 															}
 														>
-															BlueWillow v4
+															Stable Diffusion 1.5
 														</a>
-														<a
+														{/* <a
 															href="#"
 															className="text-gray-700 block px-4 py-2 text-sm"
 															role="menuitem"
@@ -109,31 +160,7 @@ function Inpainting() {
 															onClick={() => handleOptionSelect("DALL.E 2")}
 														>
 															DALL.E 2
-														</a>
-													</div>
-													<div className="py-1" role="none">
-														<a
-															href="#"
-															className="text-gray-700 block px-4 py-2 text-sm"
-															role="menuitem"
-															tabIndex="-1"
-															onClick={() =>
-																handleOptionSelect("Stable Diffusion v2")
-															}
-														>
-															Stable Diffusion v2
-														</a>
-														<a
-															href="#"
-															className="text-gray-700 block px-4 py-2 text-sm"
-															role="menuitem"
-															tabIndex="-1"
-															onClick={() =>
-																handleOptionSelect("Google Imagen 2")
-															}
-														>
-															Google Imagen 2
-														</a>
+														</a> */}
 													</div>
 												</div>
 											)}
@@ -149,7 +176,7 @@ function Inpainting() {
 											{/* upload */}
 											<div className="flex items-center justify-center w-full">
 												<label
-													htmlFor="dropzone-file"
+													htmlFor="dropzonefile"
 													className="flex flex-col items-center justify-center w-full h-38 p-4 border-2 border-violet-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
 												>
 													<div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -177,7 +204,7 @@ function Inpainting() {
 													</div>
 													<br />
 													<input
-														id="dropzone-file"
+														id="dropzonefile"
 														type="file"
 														className="hidden"
 														onChange={handleImageUpload}
@@ -205,10 +232,77 @@ function Inpainting() {
 												htmlFor="message"
 												className="block mb-2 text-md font-semibold text-gray-500"
 											>
+												Mask Image
+											</label>
+											{/* upload */}
+											<div className="flex items-center justify-center w-full">
+												<label
+													htmlFor="maskfile"
+													className="flex flex-col items-center justify-center w-full h-38 p-4 border-2 border-violet-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 "
+												>
+													<div className="flex flex-col items-center justify-center pt-5 pb-6">
+														<svg
+															className="w-8 h-8 mb-4 text-gray-500 "
+															aria-hidden="true"
+															xmlns="http://www.w3.org/2000/svg"
+															fill="none"
+															viewBox="0 0 20 16"
+														>
+															<path
+																stroke="currentColor"
+																strokeLinecap="round"
+																strokeLinejoin="round"
+																strokeWidth="2"
+																d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+															/>
+														</svg>
+														<p className="text-sm text-gray-500">
+															<span className="font-semibold">
+																Click to upload
+															</span>{" "}
+															or drag and drop a mask image
+														</p>
+													</div>
+													<br />
+													<input
+														id="maskfile"
+														type="file"
+														className="hidden"
+														onChange={handlemaskUpload}
+													/>
+													{mask && (
+														<div>
+															<img
+																src={mask}
+																alt="Uploaded"
+																className="max-h-64 w-auto rounded-md"
+															/>
+														</div>
+													)}
+												</label>
+											</div>
+											{/* upload */}
+
+											<span className="text-sm font-semibold text-gray-400 text-balance tracking-tighter">
+												Upload a mask image.
+											</span>
+											<p className="text-xs text-gray-400">
+												note: In mask image the part you want to edit should be
+												white and all other parts of the image should be Black
+												use an editor to create the mask.
+											</p>
+										</div>
+										<br />
+										<div>
+											<label
+												htmlFor="message"
+												className="block mb-2 text-md font-semibold text-gray-500"
+											>
 												Prompt
 											</label>
 											<textarea
 												id="message"
+												onChange={(e) => setPrompt(e.target.value)}
 												rows="4"
 												className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-violet-300"
 												placeholder="Write your thoughts here..."
@@ -229,6 +323,7 @@ function Inpainting() {
 											</label>
 											<textarea
 												id="message"
+												onChange={(e) => setNegativePrompt(e.target.value)}
 												rows="4"
 												className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:ring-violet-300"
 												placeholder="Write your thoughts here..."
@@ -243,6 +338,7 @@ function Inpainting() {
 									<div className="mt-5">
 										<button
 											type="submit"
+											onClick={handleSubmit}
 											className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
 										>
 											Generate
@@ -259,13 +355,14 @@ function Inpainting() {
 										<div className="py-4">
 											{/* <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-lg transition sm:p-6"> */}
 											<div className="block w-full border border-gray-100 p-8 mt-12 bg-white lg:mt-0 rounded-3xl shadow-lg py-20">
-												{showGeneratedImage ? (
+											{showGeneratedImage == "image" && (
 													<img
 														alt="hero"
 														className="object-cover object-center w-72 h-64 mx-auto lg:ml-auto rounded-2xl"
-														src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+														src={url}
 													/>
-												) : (
+												)}
+												{showGeneratedImage == "text" && (
 													<article className="rounded-lg bg-white p-4 sm:p-6 mx-auto">
 														<span className="inline-block p-2 text-white">
 															<svg
@@ -283,16 +380,20 @@ function Inpainting() {
 														</span>
 														<a href="#">
 															<h3 className="mt-0.5 text-lg font-medium text-gray-900">
-																Generated images will appear here.
+																Animated images will appear here.
 															</h3>
 														</a>
 														<p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
 															Looks like you haven&apos;t created anything yet!
 															On the Left hand template provide sample prompt
-															and then click Generate. Our text-to-image feature
-															turns your words into beautiful AI visuals.
+															and then click Generate. Our image-to-image
+															feature turns your words into beautiful AI
+															visuals.
 														</p>
 													</article>
+												)}
+												{showGeneratedImage == "loading" && (
+													<div className="mx-auto border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600" />
 												)}
 											</div>
 											{/* </div> */}
