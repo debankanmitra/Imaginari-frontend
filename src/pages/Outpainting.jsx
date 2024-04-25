@@ -3,7 +3,9 @@ import { useState } from "react";
 function Outpainting() {
 	const [image, setImage] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("Stable Diffusion 1.5 - Outpaint");
+	const [selectedOption, setSelectedOption] = useState(
+		"Stable Diffusion 1.5 - Outpaint"
+	);
 
 	const [file, setFile] = useState(null);
 
@@ -25,7 +27,7 @@ function Outpainting() {
 	const handleImageUpload = (event) => {
 		const file = event.target.files[0];
 		const reader = new FileReader();
-		setFile(file)
+		setFile(file);
 
 		reader.onloadend = () => {
 			setImage(reader.result);
@@ -130,7 +132,9 @@ function Outpainting() {
 															role="menuitem"
 															tabIndex="-1"
 															onClick={() =>
-																handleOptionSelect("Stable Diffusion 1.5 - Outpaint")
+																handleOptionSelect(
+																	"Stable Diffusion 1.5 - Outpaint"
+																)
 															}
 														>
 															Stable Diffusion 1.5 - Outpaint
@@ -272,7 +276,7 @@ function Outpainting() {
 										<div className="py-4">
 											{/* <div className="rounded-lg border border-gray-100 bg-white p-4 shadow-lg transition sm:p-6"> */}
 											<div className="block w-full border border-gray-100 p-8 mt-12 bg-white lg:mt-0 rounded-3xl shadow-lg py-20">
-											{showGeneratedImage == "image" && (
+												{showGeneratedImage == "image" && (
 													<img
 														alt="hero"
 														className="object-cover object-center w-72 h-64 mx-auto lg:ml-auto rounded-2xl"
