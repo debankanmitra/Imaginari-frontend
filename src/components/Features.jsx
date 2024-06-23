@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Card = ({ img, title, description, link }) => {
 	return (
-		<div>
+		<div id="features">
 			<div className="overflow-hidden rounded-3xl border p-2 lg:max-h-60">
 				<img src={img} alt="" className="mx-auto h-44 w-full rounded-2xl" />
 			</div>
@@ -51,55 +51,48 @@ Card.propTypes = {
 
 const details = [
 	{
-		img: "imageGenerate.webp",
+		img: "features-images/imageGenerate.webp",
 		title: "Generate Image",
 		description:
-			"Generate novel images using only a text prompt (text-to-image AI generation).",
+			"Generate novel images using only a text prompt (text-to-image) AI generation.",
 		link: "/generate",
 	},
-	// {
-	// 	img: "Replace.jpg",
-	// 	title: "Edit Image",
-	// 	description:
-	// 		"Edit an entire uploaded or generated image with a text prompt.",
-	// 	link: "/edit",
-	// },
 	{
-		img: "upscaler.jpg",
+		img: "features-images/upscaler.webp",
 		title: "Upscale Image",
 		description:
 			"Enhance quality & details of existing images using AI Upscaling.",
 		link: "/upscale",
 	},
 	{
-		img: "inpainting.jpg",
+		img: "features-images/inpainting.webp",
 		title: "Image Inpainting",
-		description: "Manipulate & replace parts of an image using AI, Use a mask to replace anything in an image.",
+		description: "Manipulate & replace parts of an image using AI using a mask.",
 		link: "/inpainting",
 	},
 	{
-		img: "outpainting.jpg",
+		img: "features-images/outpainting.webp",
 		title: "Image Outpainting",
-		description: "Outpaint & expand images using AI.",
+		description: "Outpaint & expand images using AI. Make it more larger.",
 		link: "/outpainting",
 	},
 	{
-		img: "remove-background.jpg",
+		img: "features-images/remove-background.webp",
 		title: "Remove Background",
-		description: "Remove a background from any image using AI.",
+		description: "Remove background from any image using AI.",
 		link: "/removebg",
 	},
 	{
-		img: "restore.webp",
+		img: "features-images/restore.webp",
 		title: "Restore Images",
 		description: "Improve or restore images Bringing Old Photos Back to Life with AI.",		
 		link: "/restore",
 	},
 	{
-		img: "anime.jpg",
+		img: "features-images/anime.webp",
 		title: "Image to Anime",
 		description:
-			"The licensor provides the work 'as is,' and users must use it at their own risk.",
+			"Convert a image to anime style using AI.",
 		link: "/anime",
 	},
 ];

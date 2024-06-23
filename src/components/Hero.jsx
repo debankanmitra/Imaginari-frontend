@@ -6,21 +6,21 @@ function Hero() {
 					<div>
 						<div className="max-w-xl mx-auto lg:mx-0">
 							<h1 className="text-center text-4xl font-semibold tracking-tighter text-gray-900 lg:text-5xl text-balance lg:text-left">
-							AI Tools to create and edit images with text
+								AI Tools to create and edit images with text
 							</h1>
 							<p className="mt-4 text-base font-medium text-gray-500 text-center lg:text-left lg:max-w-sm">
-							Generate images from prompts in seconds, edit photos, expand pictures, Enhance your images with ease.
-								
-								Type words, get pictures — imagination is the only limit.
-								
+								Generate images from prompts in seconds, edit photos, expand
+								pictures, Enhance your images with ease. Type words get
+								pictures, imagination is the only limit.
 							</p>
 							<div className="flex flex-col items-center justify-center lg:justify-start gap-2 mx-auto mt-8 md:flex-row">
-								<button
+								<a
+									href="#features"
 									className="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium text-white duration-200 bg-gray-900 md:w-auto rounded-xl hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-black"
 									aria-label="Primary action"
 								>
 									Start Creating
-								</button>
+								</a>
 								<button
 									className="inline-flex items-center justify-center w-full h-12 gap-3 px-5 py-3 font-medium duration-200 bg-gray-100 md:w-auto rounded-xl hover:bg-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 									aria-label="Secondary action"
@@ -29,7 +29,7 @@ function Hero() {
 								</button>
 							</div>
 						</div>
-						<div className="flex flex-col gap-3 mt-10 lg:flex-row lg:gap-6">
+						{/* <div className="flex flex-col gap-3 mt-10 lg:flex-row lg:gap-6">
 							<a
 								className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white rounded-full active:bg-tangaroa-800 active:text-tangaroa-300 bg-tangaroa-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tangaroa-900 focus:outline-none group hover:bg-tangaroa-700 hover:text-tangaroa-100 lg:w-auto"
 								href="/overview"
@@ -50,38 +50,38 @@ function Hero() {
 									></path>
 								</svg>
 							</a>
-						</div>
+						</div> */}
 					</div>
 					<div className="w-full lg:w-1/2 lg:mt-0 md:mt-40 mt-16 max-lg:max-w-2xl">
 						<div className="grid grid-cols-1 min-[450px]:grid-cols-2 md:grid-cols-3 gap-8">
 							<img
-								src="https://media.craiyon.com/2023-06-05/6fd5a100ecff4046959a67f00584f99f.webp"
-								alt="Team tailwind section"
+								src="hero-images/image1.webp"
+								alt="A old man"
 								className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0"
 							/>
 							<img
-								src="https://pics.craiyon.com/2023-08-02/d4840af94ebd4be9845b1ffe4a777c79.webp"
-								alt="Team tailwind section"
+								src="hero-images/image2.webp"
+								alt="A dog"
 								className="w-44 h-56 rounded-2xl object-cover mx-auto min-[450px]:ml-0 md:mx-auto"
 							/>
 							<img
-								src="https://cdn.pixabay.com/photo/2023/05/25/12/13/ai-generated-8017114_960_720.jpg"
-								alt="Team tailwind section"
+								src="hero-images/image3.webp"
+								alt="Gandhiji"
 								className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0 md:ml-0"
 							/>
 							<img
-								src="https://cdn.pixabay.com/photo/2023/04/10/21/28/ai-generated-7914785_960_720.jpg"
-								alt="Team tailwind section"
+								src="hero-images/image4.webp"
+								alt="Mandarin queen"
 								className="w-44 h-56 rounded-2xl object-cover mx-auto min-[450px]:ml-0 md:mr-0 md:ml-auto"
 							/>
 							<img
-								src="https://data.ipic.ai/images/j7UdT2VW1AkXWUP_1705044584.png"
-								alt="Team tailwind section"
+								src="hero-images/image5.webp"
+								alt="Model"
 								className="w-44 h-56 rounded-2xl object-cover md:-mt-20 mx-auto min-[450px]:mr-0 md:mx-auto"
 							/>
 							<img
-								src="https://cdn.pixabay.com/photo/2023/02/07/10/49/ai-generated-7773820_1280.jpg"
-								alt="Team tailwind section"
+								src="hero-images/image6.webp"
+								alt="Anime"
 								className="w-44 h-56 rounded-2xl object-cover mx-auto min-[450px]:ml-0 md:mr-0"
 							/>
 						</div>

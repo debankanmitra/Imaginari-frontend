@@ -5,29 +5,21 @@ function Footer() {
 			{/* <!-- Grid --> */}
 			<div className="text-center">
 				<div>
-					<a
+					<div
 						className="flex-none text-xl font-semibold text-black "
-						href="#"
-						aria-label="Brand"
+						aria-label="Imaginari"
 					>
-						Brand
-					</a>
+						Imaginari
+					</div>
 				</div>
 				{/* <!-- End Col --> */}
 
 				<div className="mt-3">
 					<p className="text-gray-500 ">
-						We&apos;re part of the{" "}
-						<a
-							className="font-semibold text-blue-600 hover:text-blue-700 "
-							href="#"
-						>
-							Htmlstream
-						</a>{" "}
-						family.
+						Made with ❤️ by Debankan.
 					</p>
 					<p className="text-gray-500 ">
-						© Preline. 2022 Htmlstream. All rights reserved.
+						© Imaginari 2024. All rights reserved.
 					</p>
 				</div>
 
