@@ -67,7 +67,8 @@ const details = [
 	{
 		img: "features-images/inpainting.webp",
 		title: "Image Inpainting",
-		description: "Manipulate & replace parts of an image using AI using a mask.",
+		description:
+			"Manipulate & replace parts of an image using AI using a mask.",
 		link: "/inpainting",
 	},
 	{
@@ -85,14 +86,14 @@ const details = [
 	{
 		img: "features-images/restore.webp",
 		title: "Restore Images",
-		description: "Improve or restore images Bringing Old Photos Back to Life with AI.",		
+		description:
+			"Improve or restore images Bringing Old Photos Back to Life with AI.",
 		link: "/restore",
 	},
 	{
 		img: "features-images/anime.webp",
 		title: "Image to Anime",
-		description:
-			"Convert a image to anime style using AI.",
+		description: "Convert a image to anime style using AI.",
 		link: "/anime",
 	},
 ];
