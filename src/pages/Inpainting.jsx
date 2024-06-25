@@ -68,7 +68,7 @@ function Inpainting() {
 
 		setShowGeneratedImage("loading");
 		try {
-			const response = await fetch("http://127.0.0.1:8000/inpainting", {
+			const response = await fetch("https://imaginari-one.vercel.app/inpainting", {
 				method: "POST",
 				body: formData,
 			});
