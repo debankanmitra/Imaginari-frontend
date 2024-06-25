@@ -9,7 +9,7 @@ const Outpainting = lazy(() => import("./pages/Outpainting"));
 const Removebg = lazy(() => import("./pages/Removebg"));
 const Restore = lazy(() => import("./pages/Restore"));
 const Anime = lazy(() => import("./pages/Anime"));
-const Error = lazy(()=> import("./pages/Error"))
+const Error = lazy(() => import("./pages/Error"));
 
 function App() {
 	return (
@@ -24,7 +24,7 @@ function App() {
 				<Route path="/removebg" element={<Removebg />} />
 				<Route path="/restore" element={<Restore />} />
 				<Route path="/anime" element={<Anime />} />
-        <Route path="*" element={<Error />} />
+				<Route path="*" element={<Error />} />
 			</Routes>
 		</Suspense>
 	);

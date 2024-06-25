@@ -12,7 +12,7 @@ function Footer() {
 				</div>
 
 				<div className="mt-3">
-					<p className="text-gray-500 ">Made with ❤️ by Debankan.</p>
+					<p className="text-gray-500 ">Made with ❤️ by Debankan Mitra.</p>
 					<p className="text-gray-500 ">
 						© Imaginari 2024. All rights reserved.
 					</p>
