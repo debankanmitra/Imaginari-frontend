@@ -46,7 +46,7 @@ function Anime() {
 		formData.append("model", selectedOption);
 		setShowGeneratedImage("loading");
 		try {
-			const response = await fetch("https://imaginari-one.vercel.app/toanime", {
+			const response = await fetch("https://hznhacejoa33gjaetyz2j672qm0chtmi.lambda-url.us-east-1.on.aws/toanime", {
 				method: "POST",
 				body: formData,
 			});

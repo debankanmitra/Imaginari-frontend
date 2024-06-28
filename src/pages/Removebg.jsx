@@ -46,7 +46,7 @@ function Removebg() {
 
 		setShowGeneratedImage("loading");
 		try {
-			const response = await fetch("https://imaginari-one.vercel.app/removebg", {
+			const response = await fetch("https://hznhacejoa33gjaetyz2j672qm0chtmi.lambda-url.us-east-1.on.aws/removebg", {
 				method: "POST",
 				body: formData,
 			});

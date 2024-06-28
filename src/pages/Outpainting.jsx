@@ -53,7 +53,7 @@ function Outpainting() {
 
 		setShowGeneratedImage("loading");
 		try {
-			const response = await fetch("https://imaginari-one.vercel.app/outpainting", {
+			const response = await fetch("https://hznhacejoa33gjaetyz2j672qm0chtmi.lambda-url.us-east-1.on.aws/outpainting", {
 				method: "POST",
 				body: formData,
 			});

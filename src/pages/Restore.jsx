@@ -44,7 +44,7 @@ function Restore() {
 		formData.append("image", file); // imageData is the base64 encoded image
 		setShowGeneratedImage("loading");
 		try {
-			const response = await fetch("https://imaginari-one.vercel.app/restore", {
+			const response = await fetch("https://hznhacejoa33gjaetyz2j672qm0chtmi.lambda-url.us-east-1.on.aws/restore", {
 				method: "POST",
 				body: formData,
 			});

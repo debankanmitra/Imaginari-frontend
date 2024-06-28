@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Landingpage from "./pages/Landingpage";
 const Generate = lazy(() => import("./pages/Generate"));
-const Edit = lazy(() => import("./pages/Edit"));
+// const Edit = lazy(() => import("./pages/Edit"));
 const Upscale = lazy(() => import("./pages/Upscale"));
 const Inpainting = lazy(() => import("./pages/Inpainting"));
 const Outpainting = lazy(() => import("./pages/Outpainting"));
@@ -17,7 +17,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Landingpage />} />
 				<Route path="/generate" element={<Generate />} />
-				<Route path="/edit" element={<Edit />} />
+				{/* <Route path="/edit" element={<Edit />} /> */}
 				<Route path="/upscale" element={<Upscale />} />
 				<Route path="/inpainting" element={<Inpainting />} />
 				<Route path="/outpainting" element={<Outpainting />} />

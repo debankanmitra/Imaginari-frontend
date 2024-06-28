@@ -38,7 +38,7 @@ function Generate() {
 		setShowGeneratedImage("loading");
 
 		try {
-			const response = await fetch("https://imaginari-one.vercel.app/generate", {
+			const response = await fetch("https://hznhacejoa33gjaetyz2j672qm0chtmi.lambda-url.us-east-1.on.aws/generate", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
